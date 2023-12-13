@@ -8,7 +8,14 @@ export const HelloStyles = StyleSheet.create({
     width: '100%',
     paddingTop: '60%',
   },
-  loginTitle: {
+  signupForm: {
+    flex: 1,
+    justifyContent: 'center',
+    alignContent: 'center',
+    width: '100%',
+    paddingTop: '55%',
+  },
+  title: {
     fontSize: 30,
     textAlign: 'center',
     color: '#06C755',

@@ -44,7 +44,7 @@ const LoginComponent = ({setPage, setUserId, setIsSession}) => {
 
   return (
     <View style={HelloStyles.loginForm}>
-      <Text style={HelloStyles.loginTitle}>Underworld-LINE</Text>
+      <Text style={HelloStyles.title}>Underworld-LINE</Text>
       <TextInput
         style={HelloStyles.input}
         placeholder="아이디"
