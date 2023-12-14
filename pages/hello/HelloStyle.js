@@ -25,6 +25,7 @@ export const HelloStyles = StyleSheet.create({
     marginTop: '5%',
     marginLeft: 'auto',
     marginRight: 'auto',
+    paddingLeft: 15,
     borderColor: 'lightgray',
     borderRadius: 10,
     borderWidth: 1,

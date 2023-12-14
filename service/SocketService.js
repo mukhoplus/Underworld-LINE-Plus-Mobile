@@ -1,16 +1,16 @@
-import store from '../redux/store';
 import {isInNotReadMessages} from '../utils/MessageUtil';
 
 const SocketService = {
   socket: null,
+  selectedRoomId: 0,
 
-  connect: (url, setRoomList, setChatList) => {
+  connect: (url, userId, setRoomList, setChatList) => {
     SocketService.socket = new WebSocket(url);
 
     SocketService.socket.onopen = () => {};
 
     SocketService.socket.onmessage = event => {
-      const {userId, roomId} = store.getState();
+      const roomId = SocketService.selectedRoomId;
 
       const data = JSON.parse(event.data);
       const {roomList, chatResponseDto} = data;
@@ -70,6 +70,10 @@ const SocketService = {
 
   close: () => {
     SocketService.socket.close();
+  },
+
+  getRoomId: roomId => {
+    SocketService.selectedRoomId = roomId;
   },
 };
 
