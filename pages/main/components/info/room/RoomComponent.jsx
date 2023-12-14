@@ -1,8 +1,8 @@
 import React from 'react';
-import {Text} from 'react-native';
+import RoomInfo from './RoomInfo';
 
 const RoomComponent = ({userId, roomList, setRoomId}) => {
-  return <Text>채팅</Text>;
+  return <RoomInfo userId={userId} roomList={roomList} setRoomId={setRoomId} />;
 };
 
 export default RoomComponent;

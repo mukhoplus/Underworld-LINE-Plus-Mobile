@@ -1,6 +1,4 @@
-import {StyleSheet, Dimensions} from 'react-native';
-
-const windowDimensions = Dimensions.get('window');
+import {StyleSheet} from 'react-native';
 
 export const UserStyles = StyleSheet.create({
   main: {
