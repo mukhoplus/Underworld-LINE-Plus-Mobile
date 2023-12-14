@@ -57,7 +57,19 @@ const InfoComponent = ({
   return (
     <View style={MainStyles.main}>
       <View style={MainStyles.info}>
-        {menu === 0 ? <UserComponent /> : <RoomComponent />}
+        {menu === 0 ? (
+          <UserComponent
+            userId={userId}
+            userList={userList}
+            setRoomId={setRoomId}
+          />
+        ) : (
+          <RoomComponent
+            userId={userId}
+            roomList={roomList}
+            setRoomId={setRoomId}
+          />
+        )}
       </View>
       <View style={MainStyles.navbar}>
         <Pressable style={MainStyles.tab} onPress={() => setMenu(0)}>

@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text} from 'react-native';
 
-const RoomComponent = () => {
+const RoomComponent = ({userId, roomList, setRoomId}) => {
   return <Text>채팅</Text>;
 };
 

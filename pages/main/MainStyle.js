@@ -10,7 +10,6 @@ export const MainStyles = StyleSheet.create({
   },
   info: {
     flex: 1,
-    backgroundColor: 'yellow',
     width: '100%',
     height: windowDimensions.height * 0.9,
   },
@@ -57,6 +56,17 @@ export const MainStyles = StyleSheet.create({
   badgeText: {
     color: 'white',
     fontSize: 10,
+    fontWeight: 'bold',
+  },
+  header: {
+    width: '100%',
+    height: 50,
+    justifyContent: 'center',
+    paddingLeft: 10,
+  },
+  headerText: {
+    fontSize: 20,
+    color: 'black',
     fontWeight: 'bold',
   },
 });
