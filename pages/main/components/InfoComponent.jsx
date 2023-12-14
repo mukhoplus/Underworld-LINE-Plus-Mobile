@@ -121,12 +121,12 @@ const InfoComponent = ({
           <Text style={MainStyles.tabText}>로그아웃</Text>
         </Pressable>
       </View>
-      <Badge count={allNotReadCount} />
+      <Badge count={allNotReadCount} setMenu={setMenu} />
     </View>
   );
 };
 
-const Badge = ({count}) => {
+const Badge = ({count, setMenu}) => {
   if (count === 0) {
     return;
   }
@@ -150,9 +150,11 @@ const Badge = ({count}) => {
   }
 
   return (
-    <View style={[MainStyles.badgeContainer, {width, left}]}>
+    <Pressable
+      style={[MainStyles.badgeContainer, {width, left}]}
+      onPress={() => setMenu(1)}>
       <Text style={MainStyles.badgeText}>{strCount}</Text>
-    </View>
+    </Pressable>
   );
 };
 
