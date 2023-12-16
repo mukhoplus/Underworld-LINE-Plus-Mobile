@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import {Text, View, Pressable} from 'react-native';
+import React, {useEffect} from 'react';
+import {ScrollView, Text, View, Pressable} from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 import UserComponent from './info/user/UserComponent';
 import RoomComponent from './info/room/RoomComponent';
@@ -17,9 +17,9 @@ const InfoComponent = ({
   setRoomId,
   setChatList,
   allNotReadCount,
+  menu,
+  setMenu,
 }) => {
-  const [menu, setMenu] = useState(0);
-
   const resetStates = () => {
     setUserId(0);
     setUserList([]);
@@ -55,74 +55,80 @@ const InfoComponent = ({
   }, [userId]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <View style={MainStyles.main}>
-      <View style={MainStyles.info}>
-        {menu === 0 ? (
-          <UserComponent
-            userId={userId}
-            userList={userList}
-            setRoomId={setRoomId}
-          />
-        ) : (
-          <RoomComponent
-            userId={userId}
-            roomList={roomList}
-            setRoomId={setRoomId}
-          />
-        )}
+    <ScrollView contentInsetAdjustmentBehavior="automatic">
+      <View style={MainStyles.main}>
+        <View style={MainStyles.info}>
+          {menu === 0 ? (
+            <UserComponent
+              userId={userId}
+              userList={userList}
+              setRoomId={setRoomId}
+            />
+          ) : (
+            <RoomComponent
+              userId={userId}
+              roomList={roomList}
+              setRoomId={setRoomId}
+            />
+          )}
+        </View>
+        <View style={MainStyles.navbar}>
+          <Pressable style={MainStyles.tab} onPress={() => setMenu(0)}>
+            <Icon
+              style={
+                menu === 0 ? MainStyles.tabIconSelected : MainStyles.tabIcon
+              }
+              name="user"
+              size={25}
+              color="black"
+            />
+            <Text
+              style={
+                menu === 0 ? MainStyles.tabTextSelected : MainStyles.tabText
+              }>
+              친구
+            </Text>
+          </Pressable>
+          <Pressable style={MainStyles.tab} onPress={() => setMenu(1)}>
+            <Icon
+              style={
+                menu === 1 ? MainStyles.tabIconSelected : MainStyles.tabIcon
+              }
+              name="message1"
+              size={25}
+              color="black"
+            />
+            <Text
+              style={
+                menu === 1 ? MainStyles.tabTextSelected : MainStyles.tabText
+              }>
+              채팅
+            </Text>
+          </Pressable>
+          <Pressable
+            style={MainStyles.tab}
+            onPress={() => {
+              axiosRequest('post', '/user/logout')
+                .then(() => {
+                  SocketService.close();
+                })
+                .catch()
+                .finally(() => {
+                  resetStates();
+                });
+            }}>
+            <Icon
+              style={MainStyles.tabIcon}
+              name="logout"
+              size={25}
+              color="black"
+            />
+            <Text style={MainStyles.tabText}>로그아웃</Text>
+          </Pressable>
+        </View>
+        <Badge count={allNotReadCount} setMenu={setMenu} />
       </View>
-      <View style={MainStyles.navbar}>
-        <Pressable style={MainStyles.tab} onPress={() => setMenu(0)}>
-          <Icon
-            style={menu === 0 ? MainStyles.tabIconSelected : MainStyles.tabIcon}
-            name="user"
-            size={25}
-            color="black"
-          />
-          <Text
-            style={
-              menu === 0 ? MainStyles.tabTextSelected : MainStyles.tabText
-            }>
-            친구
-          </Text>
-        </Pressable>
-        <Pressable style={MainStyles.tab} onPress={() => setMenu(1)}>
-          <Icon
-            style={menu === 1 ? MainStyles.tabIconSelected : MainStyles.tabIcon}
-            name="message1"
-            size={25}
-            color="black"
-          />
-          <Text
-            style={
-              menu === 1 ? MainStyles.tabTextSelected : MainStyles.tabText
-            }>
-            채팅
-          </Text>
-        </Pressable>
-        <Pressable
-          style={MainStyles.tab}
-          onPress={() => {
-            axiosRequest('post', '/user/logout')
-              .then(() => {
-                SocketService.close();
-              })
-              .catch()
-              .finally(() => {
-                resetStates();
-              });
-          }}>
-          <Icon
-            style={MainStyles.tabIcon}
-            name="logout"
-            size={25}
-            color="black"
-          />
-          <Text style={MainStyles.tabText}>로그아웃</Text>
-        </Pressable>
-      </View>
-      <Badge count={allNotReadCount} setMenu={setMenu} />
-    </View>
+    </ScrollView>
   );
 };
 

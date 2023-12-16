@@ -16,6 +16,7 @@ const Main = ({userId, setUserId}) => {
   const [roomId, setRoomId] = useState(0);
   const [chatList, setChatList] = useState([]);
   const [allNotReadCount, setAllNotReadCount] = useState(0);
+  const [menu, setMenu] = useState(0);
 
   useEffect(() => {
     SocketService.connect(
@@ -47,6 +48,8 @@ const Main = ({userId, setUserId}) => {
           setRoomId={setRoomId}
           setChatList={setChatList}
           allNotReadCount={allNotReadCount}
+          menu={menu}
+          setMenu={setMenu}
         />
       ) : (
         <ChatComponent
