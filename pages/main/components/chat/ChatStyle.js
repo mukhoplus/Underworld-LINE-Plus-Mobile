@@ -82,6 +82,7 @@ export const ChatStyles = StyleSheet.create({
   },
   myNotRead: {
     color: 'black',
+    fontSize: 10,
     margin: 0,
     paddingBottom: 5,
     textAlign: 'right',
@@ -89,6 +90,7 @@ export const ChatStyles = StyleSheet.create({
   },
   yourNotRead: {
     color: 'black',
+    fontSize: 10,
     margin: 0,
     paddingBottom: 5,
     textAlign: 'left',
