@@ -74,6 +74,7 @@ export const ChatStyles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'rgb(155, 155, 155)',
     color: 'white',
+    fontSize: 12,
     borderRadius: 20,
     paddingVertical: 5,
     paddingHorizontal: 20,
