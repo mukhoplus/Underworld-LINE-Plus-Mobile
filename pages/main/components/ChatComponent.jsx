@@ -50,6 +50,7 @@ const ChatComponent = ({
     if (iRoomId === 0) {
       return '';
     }
+
     const data = getRoomNameInRoomList(iRoomList, iRoomId);
 
     if (!data) {
@@ -107,7 +108,8 @@ const ChatComponent = ({
       <ScrollView
         style={keyboardStyle ? ChatStyles.keyboardOn : ChatStyles.keyboardOff}
         ref={screenRef}
-        showsVerticalScrollIndicator={false}>
+        showsVerticalScrollIndicator={false}
+        scrollEnabled={false}>
         <ChatList
           userId={userId}
           chatList={chatList}
