@@ -5,7 +5,7 @@ const SocketService = {
   selectedRoomId: 0,
 
   connect: (url, userId, setRoomList, setChatList) => {
-    SocketService.socket = new WebSocket(url);
+    SocketService.socket = new WebSocket(`${url}?userId=${userId}`);
 
     SocketService.socket.onopen = () => {};
 
@@ -18,8 +18,13 @@ const SocketService = {
 
       setRoomList(roomList);
 
-      if (roomId === 0) return;
-      if (roomId !== responseRoomId) return;
+      if (roomId === 0) {
+        return;
+      }
+
+      if (roomId !== responseRoomId) {
+        return;
+      }
 
       if (isInNotReadMessages(userId, chatList)) {
         SocketService.read(roomId, userId);
@@ -33,7 +38,9 @@ const SocketService = {
   },
 
   send: (roomId, sendUserId, message) => {
-    if (/^\s*$/.test(message)) return;
+    if (/^\s*$/.test(message)) {
+      return;
+    }
 
     const sendChatDto = {
       roomId,
@@ -70,6 +77,7 @@ const SocketService = {
 
   close: () => {
     SocketService.socket.close();
+    SocketService.selectedRoomId = 0;
   },
 
   getRoomId: roomId => {

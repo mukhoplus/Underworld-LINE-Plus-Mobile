@@ -20,13 +20,13 @@ const App = () => {
   return (
     <>
       <SafeAreaView>
-        <ScrollView contentInsetAdjustmentBehavior="automatic">
-          {userId === 0 ? (
+        {userId === 0 ? (
+          <ScrollView contentInsetAdjustmentBehavior="automatic">
             <Hello setUserId={setUserId} setIsSession={setIsSession} />
-          ) : (
-            <Main userId={userId} setUserId={setUserId} />
-          )}
-        </ScrollView>
+          </ScrollView>
+        ) : (
+          <Main userId={userId} setUserId={setUserId} />
+        )}
       </SafeAreaView>
       <Toast />
     </>

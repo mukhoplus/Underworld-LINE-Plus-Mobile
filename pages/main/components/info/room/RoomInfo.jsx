@@ -40,7 +40,7 @@ const RoomInfo = ({userId, roomList, setRoomId}) => {
               </View>
               <View style={RoomStyles.line}>
                 <Text style={RoomStyles.message}>
-                  {LongStringUtil(room.lastMessage, 20)}
+                  {LongStringUtil(room.lastMessage, 24)}
                 </Text>
                 <BadgeCount count={room.notReadCount} />
               </View>

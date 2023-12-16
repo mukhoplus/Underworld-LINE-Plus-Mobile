@@ -61,12 +61,17 @@ export const MainStyles = StyleSheet.create({
   header: {
     width: '100%',
     height: 50,
-    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
     paddingLeft: 10,
   },
   headerText: {
     fontSize: 20,
     color: 'black',
     fontWeight: 'bold',
+  },
+  headerIcon: {
+    marginRight: 10,
   },
 });

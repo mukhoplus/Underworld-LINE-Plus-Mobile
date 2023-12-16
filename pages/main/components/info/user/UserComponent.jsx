@@ -14,7 +14,9 @@ const UserComponent = ({userId, userList, setRoomId}) => {
   };
 
   const handleUserInfo = () => {
-    if (userList.length === 0) return;
+    if (userList.length === 0) {
+      return;
+    }
 
     const myInfo = getMyInfo();
     const friendInfo = getFriendInfo();
