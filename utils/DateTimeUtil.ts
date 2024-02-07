@@ -24,7 +24,7 @@ export const getRoomDateTime = (datetime: string) => {
 
 export const getChatDate = (datetime: string) => {
   const date = getStringToDateTime(datetime);
-  return date.format('YYYY년 MM월 D일 dddd');
+  return date.format('YYYY년 M월 D일 dddd');
 };
 
 export const getChatTime = (datetime: string) => {
