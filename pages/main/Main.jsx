@@ -20,7 +20,7 @@ const Main = ({userId, setUserId}) => {
 
   useEffect(() => {
     SocketService.connect(
-      `ws://${BaseURL}/api/v1/socket`,
+      `wss://${BaseURL}/api/v1/socket`,
       userId,
       setRoomList,
       setChatList,
